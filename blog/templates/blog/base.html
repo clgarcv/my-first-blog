@@ -15,7 +15,13 @@
                 {% elif request.resolver_match.url_name == 'post_draft_list' %}
                     <a href="{% url 'post_list' %}" class="top-menu">Post publicados</span></a>
                 {% endif %}
-                
+                <p class="top-menu">Hello {{ user.username }}</p>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Cerrar sesión</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
             {% endif %}
 
             <h1><a href="/">Django Girls Blog</a></h1>
